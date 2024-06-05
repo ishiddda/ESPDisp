@@ -54,6 +54,7 @@ void lcdinit(){
 static LGFX_Sprite sprite1(&lcd);     //lcd all
 static LGFX_Sprite sprite2(&sprite1); //bank
 static LGFX_Sprite sprite3(&sprite1); //sample
+
 static LGFX_Sprite sprite4(&sprite1); //1
 static LGFX_Sprite sprite5(&sprite1); //2
 static LGFX_Sprite sprite6(&sprite1); //3
@@ -66,8 +67,11 @@ static LGFX_Sprite sprite12(&sprite1); //9
 static LGFX_Sprite sprite13(&sprite1); //10
 static LGFX_Sprite sprite14(&sprite1); //11
 static LGFX_Sprite sprite15(&sprite1); //12 fx3
+
 static LGFX_Sprite sprite16(&sprite1); //pointer
 static LGFX_Sprite sprite17(&sprite1); //
+
+static LGFX_Sprite spriteb[9];
 
 
 
