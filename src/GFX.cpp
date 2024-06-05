@@ -70,7 +70,8 @@ static LGFX_Sprite sprite16(&sprite1); //pointer
 static LGFX_Sprite sprite17(&sprite1); //
 
 
-void drawbutton1(int sample, int vol){
+
+void drawbutton1(int bank, int sample, int vol){
 sprite4.createSprite(27,27);
   sprite4.fillScreen(BG);
   sprite4.fillCircle(13,13,8,C1);
@@ -79,14 +80,14 @@ sprite4.createSprite(27,27);
     sprite4.fillCircle(13,13,8,C2);
   }else if(sample == 0){ //無選択時 
     sprite4.fillCircle(13,13,8,C1);
-    sprite4.fillArc(13,13,10,13,0, retarc(1), C1);
+    sprite4.fillArc(13,13,10,13,0, retarc(bank,1), C1);
   }else{     
-    sprite4.fillArc(13,13,10,13,0, retarc(1), C1); 
+    sprite4.fillArc(13,13,10,13,0, retarc(bank,1), C1); 
   }  
   sprite4.pushSprite(6,37);
 }
 
-void drawbutton2(int sample, int vol){
+void drawbutton2(int bank, int sample, int vol){
   sprite5.createSprite(27,27);
   sprite5.fillScreen(BG);
   sprite5.fillCircle(13,13,8,C1);
@@ -94,12 +95,12 @@ void drawbutton2(int sample, int vol){
   sprite5.fillArc(13,13,10,13,0,vol,C2);
   sprite5.fillCircle(13,13,8,C2);
   }else{
-    sprite5.fillArc(13,13,10,13,0,retarc(2),C1);
+    sprite5.fillArc(13,13,10,13,0,retarc(bank,2),C1);
   }
   sprite5.pushSprite(35,37);
 }
 
-void drawbutton3(int sample, int vol){
+void drawbutton3(int bank, int sample, int vol){
   sprite6.createSprite(27,27);
   sprite6.fillScreen(BG);
   sprite6.fillCircle(13,13,8,C1);
@@ -107,12 +108,12 @@ void drawbutton3(int sample, int vol){
     sprite6.fillArc(13,13,10,13,0,vol,C2);
     sprite6.fillCircle(13,13,8,C2);
   }else{
-  sprite6.fillArc(13,13,10,13,0,retarc(3),C1);
+  sprite6.fillArc(13,13,10,13,0,retarc(bank,3),C1);
   }
   sprite6.pushSprite(64,37);
 }
 
-void drawbutton4(int sample, int volume){
+void drawbutton4(int bank, int sample, int volume){
   sprite8.createSprite(27,27);
   sprite8.fillScreen(BG);
   sprite8.fillCircle(13,13,8,C1);
@@ -120,12 +121,12 @@ void drawbutton4(int sample, int volume){
     sprite8.fillArc(13,13,10,13,0,volume,C2);
     sprite8.fillCircle(13,13,8,C2);
   }else{
-  sprite8.fillArc(13,13,10,13,0, retarc(4),C1);
+  sprite8.fillArc(13,13,10,13,0, retarc(bank,4),C1);
   }
   sprite8.pushSprite(6,66);
 }
 
-void drawbutton5(int sample, int volume){
+void drawbutton5(int bank, int sample, int volume){
   sprite9.createSprite(27,27);
   sprite9.fillScreen(BG);
   sprite9.fillCircle(13,13,8,C1);
@@ -133,12 +134,12 @@ void drawbutton5(int sample, int volume){
     sprite9.fillArc(13,13,10,13,0,volume,C2);
     sprite9.fillCircle(13,13,8,C2);
   }else{
-    sprite9.fillArc(13,13,10,13,0,retarc(5),C1);
+    sprite9.fillArc(13,13,10,13,0,retarc(bank,5),C1);
   }
   sprite9.pushSprite(35,66);
 }
 
-void drawbutton6(int sample, int volume){
+void drawbutton6(int bank, int sample, int volume){
   sprite10.createSprite(27,27);
   sprite10.fillScreen(BG);
   sprite10.fillCircle(13,13,8,C1);
@@ -146,13 +147,12 @@ void drawbutton6(int sample, int volume){
   sprite10.fillArc(13,13,10,13,0,volume,C2);
   sprite10.fillCircle(13,13,8,C2);
   }else{
-    sprite10.fillArc(13,13,10,13,0,retarc(6),C1);
+    sprite10.fillArc(13,13,10,13,0,retarc(bank,6),C1);
   }
   sprite10.pushSprite(64,66);
 }
 
-
-void drawbutton7(int sample, int volume){
+void drawbutton7(int bank, int sample, int volume){
   sprite12.createSprite(27,27);
   sprite12.fillScreen(BG);
   sprite12.fillCircle(13,13,8,C1);
@@ -160,12 +160,12 @@ void drawbutton7(int sample, int volume){
     sprite12.fillArc(13,13,10,13,0,volume,C2);
     sprite12.fillCircle(13,13,8,C2);
   }else{
-  sprite12.fillArc(13,13,10,13,0,retarc(7),C1);
+  sprite12.fillArc(13,13,10,13,0,retarc(bank,7),C1);
   }
   sprite12.pushSprite(6,95);
 }
 
-void drawbutton8(int sample, int volume){
+void drawbutton8(int bank, int sample, int volume){
  sprite13.createSprite(27,27);
   sprite13.fillScreen(BG);
   sprite13.fillCircle(13,13,8,C1);
@@ -173,12 +173,12 @@ void drawbutton8(int sample, int volume){
     sprite13.fillArc(13,13,10,13,0,volume,C2);
     sprite13.fillCircle(13,13,8,C2);
   }else{
-  sprite13.fillArc(13,13,10,13,0,retarc(8),C1);
+  sprite13.fillArc(13,13,10,13,0,retarc(bank,8),C1);
   }  
   sprite13.pushSprite(35,95);
 }
 
-void drawbutton9(int sample, int volume){
+void drawbutton9(int bank, int sample, int volume){
   sprite14.createSprite(27,27);
   sprite14.fillScreen(BG);
   sprite14.fillCircle(13,13,8,C1);
@@ -186,7 +186,7 @@ void drawbutton9(int sample, int volume){
     sprite14.fillArc(13,13,10,13,0,volume,C2);
     sprite14.fillCircle(13,13,8,C2);
   }else{
-  sprite14.fillArc(13,13,10,13,0,retarc(9),C1);
+  sprite14.fillArc(13,13,10,13,0,retarc(bank,9),C1);
   }  
   sprite14.pushSprite(64,95);
 
@@ -216,32 +216,32 @@ void drawbutton12(){
   sprite15.pushSprite(93,95);
 }
 
-void buttondraw(int value){
-  drawbutton1(value, retarc(1));
-  drawbutton2(value, retarc(2));
-  drawbutton3(value, retarc(3));
-  drawbutton4(value, retarc(4));
-  drawbutton5(value, retarc(5));
-  drawbutton6(value, retarc(6));
-  drawbutton7(value, retarc(7));
-  drawbutton8(value, retarc(8));
-  drawbutton9(value, retarc(9));
+void buttondraw(int bank, int value){
+  drawbutton1(bank, value, retarc(bank,1));
+  drawbutton2(bank, value, retarc(bank,2));
+  drawbutton3(bank, value, retarc(bank,3));
+  drawbutton4(bank, value, retarc(bank,4));
+  drawbutton5(bank, value, retarc(bank,5));
+  drawbutton6(bank, value, retarc(bank,6));
+  drawbutton7(bank, value, retarc(bank,7));
+  drawbutton8(bank, value, retarc(bank,8));
+  drawbutton9(bank, value, retarc(bank,9));
   drawbutton10();
   drawbutton11();
   drawbutton12();
   
 }
 
-void drawbuttonvol(int value, int vol){
-  drawbutton1(value, vol);
-  drawbutton2(value, vol);
-  drawbutton3(value, vol);
-  drawbutton4(value, vol);
-  drawbutton5(value, vol);
-  drawbutton6(value, vol);
-  drawbutton7(value, vol);
-  drawbutton8(value, vol);
-  drawbutton9(value, vol);
+void drawbuttonvol(int bank, int value, int vol){
+  drawbutton1(bank, value, vol);
+  drawbutton2(bank, value, vol);
+  drawbutton3(bank, value, vol);
+  drawbutton4(bank, value, vol);
+  drawbutton5(bank, value, vol);
+  drawbutton6(bank, value, vol);
+  drawbutton7(bank, value, vol);
+  drawbutton8(bank, value, vol);
+  drawbutton9(bank, value, vol);
   drawbutton10();
   drawbutton11();
   drawbutton12();

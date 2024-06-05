@@ -2,14 +2,14 @@
 
 ButtonMgr btnmgr;
 
-int retvol(int n){
-  return btnmgr.RetVol(n);
+int retvol(int b, int s){
+  return btnmgr.RetVol(b, s);
 }
 
-int retarc(int n){
-    return btnmgr.CalcArc(n);
+int retarc(int b, int s){
+    return btnmgr.CalcArc(b, s);
 }
 
-void setvol(int n, int value){
-    btnmgr.SetVol(n, value);
+void setvol(int b, int s, int value){
+    btnmgr.SetVol(b, s, value);
 }

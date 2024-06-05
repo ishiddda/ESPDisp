@@ -46,7 +46,7 @@ int play(){
   }else{
   bankdraw(CurrentBank);
   sampledraw(0);
-  buttondraw(0);
+  buttondraw(CurrentBank,0);
   volumedraw(0);
   return 1;
   }
@@ -62,7 +62,7 @@ int bank(){
   }else{
   bankdraw(value);
   sampledraw(0);
-  buttondraw(0);
+  buttondraw(CurrentBank,0);
   volumedraw(0);
   drawpointer(1);
   return 1;
@@ -81,7 +81,7 @@ int sample(){
   }else{
   bankdraw(CurrentBank);
   sampledraw(value);
-  buttondraw(value);
+  buttondraw(CurrentBank,value);
   volumedraw(0);
   drawpointer(10);
   return 1;
@@ -89,10 +89,10 @@ int sample(){
 };  
 
 int volume(){
-  numberSelector.setRange(-retvol(CurrentSample), 100-retvol(CurrentSample), 1, false, 0);
-  int value = retvol(CurrentSample) + ValueLoad(-retvol(CurrentSample)-1, 100-retvol(CurrentSample)+1);
+  numberSelector.setRange(-retvol(CurrentBank,CurrentSample), 100-retvol(CurrentBank ,CurrentSample), 1, false, 0);
+  int value = retvol(CurrentBank, CurrentSample) + ValueLoad(-retvol(CurrentBank, CurrentSample)-1, 100-retvol(CurrentBank ,CurrentSample)+1);
   if (rotaryEncoder->isEncoderButtonClicked()){
-  setvol(CurrentSample, value);
+  setvol(CurrentBank, CurrentSample, value);
   Serial.print(CurrentSample);
   CurrentSample = 1;
   return 0;
@@ -100,7 +100,7 @@ int volume(){
 
   bankdraw(CurrentBank);
   sampledraw(CurrentSample);
-  drawbuttonvol(CurrentSample, value * 3.6);
+  drawbuttonvol(CurrentBank, CurrentSample, value * 3.6);
   volumedraw(value);    
   drawpointer(21);
   return 1;
