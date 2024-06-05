@@ -71,7 +71,7 @@ static LGFX_Sprite sprite15(&sprite1); //12 fx3
 static LGFX_Sprite sprite16(&sprite1); //pointer
 static LGFX_Sprite sprite17(&sprite1); //
 
-
+static LGFX_Sprite spriteb[9];
 
 
 
