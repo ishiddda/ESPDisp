@@ -62,7 +62,7 @@ int bank(){
   }else{
   bankdraw(value);
   sampledraw(0);
-  buttondraw(CurrentBank,0);
+  buttondraw(value,0);
   volumedraw(0);
   drawpointer(1);
   return 1;
