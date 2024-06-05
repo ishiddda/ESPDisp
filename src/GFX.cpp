@@ -59,131 +59,79 @@ static LGFX_Sprite sprite3(&sprite1); //sample
 static LGFX_Sprite sprite4(&sprite1); //1
 static LGFX_Sprite sprite5(&sprite1); //2
 static LGFX_Sprite sprite6(&sprite1); //3
-static LGFX_Sprite sprite7(&sprite1); //4 fx1
+//static LGFX_Sprite sprite[10](&sprite1); //4 fx1
 static LGFX_Sprite sprite8(&sprite1); //5
 static LGFX_Sprite sprite9(&sprite1); //6
 static LGFX_Sprite sprite10(&sprite1); //7
-static LGFX_Sprite sprite11(&sprite1); //8 fx2
+//static LGFX_Sprite sprite[11](&sprite1); //8 fx2
 static LGFX_Sprite sprite12(&sprite1); //9
 static LGFX_Sprite sprite13(&sprite1); //10
 static LGFX_Sprite sprite14(&sprite1); //11
-static LGFX_Sprite sprite15(&sprite1); //12 fx3
+//static LGFX_Sprite sprite[12](&sprite1); //12 fx3
 
 static LGFX_Sprite sprite16(&sprite1); //pointer
 static LGFX_Sprite sprite17(&sprite1); //
 
-static LGFX_Sprite spriteb[9];
+static LGFX_Sprite spriteb[13];
 
+void drawbuttonfx(){
+  for(int i=10; i<13; i++){
+  spriteb[i].createSprite(27,27);
+  spriteb[i].fillScreen(BG);
+  spriteb[i].fillCircle(13,13,8,C1);
+  spriteb[i].fillArc(13,13,10,13,0,360,C1);
+  spriteb[i].pushSprite(&sprite1,93,yst + spc*(i-10));    
+  }
+}
 
-
-void drawbutton1(int bank, int sample, int vol){
-spriteb[1].createSprite(27,27);
-  spriteb[1].fillScreen(BG);
-  spriteb[1].fillCircle(13,13,8,C1);
-  if(sample == 1){ //該当時
-    spriteb[1].fillArc(13,13,10,13,0, vol, C2);
-    spriteb[1].fillCircle(13,13,8,C2);
+void drawbutton(int bank, int sample){
+for(int i=1; i<10; i++){
+  spriteb[i].createSprite(27,27);
+  spriteb[i].fillScreen(BG);
+  spriteb[i].fillCircle(13,13,8,C1);
+  spriteb[i].fillArc(13,13,10,13,0, retarc(bank, i), C1);
+  if(sample == i){ //該当時
+    spriteb[sample].fillArc(13,13,10,13,0, retarc(bank, i), C2);
+    spriteb[sample].fillCircle(13,13,8,C2);
   }else if(sample == 0){ //無選択時 
-    spriteb[1].fillCircle(13,13,8,C1);
-    spriteb[1].fillArc(13,13,10,13,0, retarc(bank,1), C1);
+    spriteb[i].fillCircle(13,13,8,C1);
+    spriteb[i].fillArc(13,13,10,13,0, retarc(bank,i), C1);
   }else{     
-    spriteb[1].fillArc(13,13,10,13,0, retarc(bank,1), C1); 
-  }  
-  spriteb[1].pushSprite(&sprite1,xst,yst); //6, 37
-}
-
-void drawbutton2(int bank, int sample, int vol){
-  sprite5.createSprite(27,27);
-  sprite5.fillScreen(BG);
-  sprite5.fillCircle(13,13,8,C1);
-  if(sample == 2){
-  sprite5.fillArc(13,13,10,13,0,vol,C2);
-  sprite5.fillCircle(13,13,8,C2);
-  }else{
-    sprite5.fillArc(13,13,10,13,0,retarc(bank,2),C1);
+    spriteb[i].fillArc(13,13,10,13,0, retarc(bank,i), C1); 
   }
-  sprite5.pushSprite(xst + spc,yst);
+  if(0<i && i<4)spriteb[i].pushSprite(&sprite1, xst + spc*(i-1), yst); //(0,1,2)
+  if(3<i && i<7)spriteb[i].pushSprite(&sprite1, xst + spc*(i-4), yst + spc); 
+  if(6<i && i<10)spriteb[i].pushSprite(&sprite1, xst + spc*(i-7), yst + 2*spc); 
+}
+drawbuttonfx(); 
 }
 
-void drawbutton3(int bank, int sample, int vol){
-  sprite6.createSprite(27,27);
-  sprite6.fillScreen(BG);
-  sprite6.fillCircle(13,13,8,C1);
-  if(sample == 3){
-    sprite6.fillArc(13,13,10,13,0,vol,C2);
-    sprite6.fillCircle(13,13,8,C2);
-  }else{
-  sprite6.fillArc(13,13,10,13,0,retarc(bank,3),C1);
+void drawbuttonvol(int bank, int sample, int vol){
+for(int i=1; i<10; i++){
+  spriteb[i].createSprite(27,27);
+  spriteb[i].fillScreen(BG);
+  spriteb[i].fillCircle(13,13,8,C1);
+  //spriteb[i].fillArc(13,13,10,13,0, retarc(bank, i), C1);
+  if(sample == i){ //該当時
+    spriteb[sample].fillArc(13,13,10,13,0, vol, C2);
+    spriteb[sample].fillCircle(13,13,8,C2);
+  }else if(sample == 0){ //無選択時 
+    spriteb[i].fillCircle(13,13,8,C1);
+    spriteb[i].fillArc(13,13,10,13,0, retarc(bank,i), C1);
+  }else{     
+    spriteb[i].fillArc(13,13,10,13,0, retarc(bank,i), C1); 
   }
-  sprite6.pushSprite(xst + 2*spc, yst);
+  if(0<i && i<4)spriteb[i].pushSprite(&sprite1, xst + spc*(i-1), yst); //(0,1,2)
+  if(3<i && i<7)spriteb[i].pushSprite(&sprite1, xst + spc*(i-4), yst + spc); 
+  if(6<i && i<10)spriteb[i].pushSprite(&sprite1, xst + spc*(i-7), yst + 2*spc); 
+}
+drawbuttonfx(); 
 }
 
-void drawbutton4(int bank, int sample, int volume){
-  sprite8.createSprite(27,27);
-  sprite8.fillScreen(BG);
-  sprite8.fillCircle(13,13,8,C1);
-  if(sample == 4){
-    sprite8.fillArc(13,13,10,13,0,volume,C2);
-    sprite8.fillCircle(13,13,8,C2);
-  }else{
-  sprite8.fillArc(13,13,10,13,0, retarc(bank,4),C1);
-  }
-  sprite8.pushSprite(6,66);
-}
 
-void drawbutton5(int bank, int sample, int volume){
-  sprite9.createSprite(27,27);
-  sprite9.fillScreen(BG);
-  sprite9.fillCircle(13,13,8,C1);
-  if(sample == 5){
-    sprite9.fillArc(13,13,10,13,0,volume,C2);
-    sprite9.fillCircle(13,13,8,C2);
-  }else{
-    sprite9.fillArc(13,13,10,13,0,retarc(bank,5),C1);
-  }
-  sprite9.pushSprite(35,66);
-}
 
-void drawbutton6(int bank, int sample, int volume){
-  sprite10.createSprite(27,27);
-  sprite10.fillScreen(BG);
-  sprite10.fillCircle(13,13,8,C1);
-  if(sample == 6){
-  sprite10.fillArc(13,13,10,13,0,volume,C2);
-  sprite10.fillCircle(13,13,8,C2);
-  }else{
-    sprite10.fillArc(13,13,10,13,0,retarc(bank,6),C1);
-  }
-  sprite10.pushSprite(64,66);
-}
-
-void drawbutton7(int bank, int sample, int volume){
-  sprite12.createSprite(27,27);
-  sprite12.fillScreen(BG);
-  sprite12.fillCircle(13,13,8,C1);
-  if(sample == 7){
-    sprite12.fillArc(13,13,10,13,0,volume,C2);
-    sprite12.fillCircle(13,13,8,C2);
-  }else{
-  sprite12.fillArc(13,13,10,13,0,retarc(bank,7),C1);
-  }
-  sprite12.pushSprite(6,95);
-}
-
-void drawbutton8(int bank, int sample, int volume){
- sprite13.createSprite(27,27);
-  sprite13.fillScreen(BG);
-  sprite13.fillCircle(13,13,8,C1);
-  if(sample == 8){
-    sprite13.fillArc(13,13,10,13,0,volume,C2);
-    sprite13.fillCircle(13,13,8,C2);
-  }else{
-  sprite13.fillArc(13,13,10,13,0,retarc(bank,8),C1);
-  }  
-  sprite13.pushSprite(35,95);
-}
-
-void drawbutton9(int bank, int sample, int volume){
+/*
+void drawbutton_onokosi(int bank, int sample, int volume){
   sprite14.createSprite(27,27);
   sprite14.fillScreen(BG);
   sprite14.fillCircle(13,13,8,C1);
@@ -194,49 +142,12 @@ void drawbutton9(int bank, int sample, int volume){
   sprite14.fillArc(13,13,10,13,0,retarc(bank,9),C1);
   }  
   sprite14.pushSprite(64,95);
-
 }
+*/
 
-void drawbutton10(){
-  sprite7.createSprite(27,27);
-  sprite7.fillScreen(BG);
-  sprite7.fillCircle(13,13,8,C1);
-  sprite7.fillArc(13,13,10,13,0,360,C1);
-  sprite7.pushSprite(93,37);
-}
 
-void drawbutton11(){
-  sprite11.createSprite(27,27);
-  sprite11.fillScreen(BG);
-  sprite11.fillCircle(13,13,8,C1);
-  sprite11.fillArc(13,13,10,13,0,360,C1);
-  sprite11.pushSprite(93,66);
-}
 
-void drawbutton12(){
-  sprite15.createSprite(27,27);
-  sprite15.fillScreen(BG);
-  sprite15.fillCircle(13,13,8,C1);
-  sprite15.fillArc(13,13,10,13,0,360,C1);
-  sprite15.pushSprite(93,95);
-}
-
-void buttondraw(int bank, int value){
-  drawbutton1(bank, value, retarc(bank,1));
-  drawbutton2(bank, value, retarc(bank,2));
-  drawbutton3(bank, value, retarc(bank,3));
-  drawbutton4(bank, value, retarc(bank,4));
-  drawbutton5(bank, value, retarc(bank,5));
-  drawbutton6(bank, value, retarc(bank,6));
-  drawbutton7(bank, value, retarc(bank,7));
-  drawbutton8(bank, value, retarc(bank,8));
-  drawbutton9(bank, value, retarc(bank,9));
-  drawbutton10();
-  drawbutton11();
-  drawbutton12();
-  
-}
-
+/*
 void drawbuttonvol(int bank, int value, int vol){
   drawbutton1(bank, value, vol);
   drawbutton2(bank, value, vol);
@@ -251,6 +162,7 @@ void drawbuttonvol(int bank, int value, int vol){
   drawbutton11();
   drawbutton12();
 }
+*/
 
 String songname[6] = {"", "three out", "Catchball Rules", "makiba","NOP","9ine Thirty"};
 String samplename[13] = {"", "da", "sa", "synth1", "synth2", "synth3","synth4","synth","synth","synth","synth","synth","synth"};

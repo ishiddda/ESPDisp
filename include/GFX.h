@@ -82,21 +82,9 @@ public:
 };
 
 //ボタン描画
-void drawbutton1(int bank, int sample);
-void drawbutton2(int bank, int sample);
-void drawbutton3(int bank, int sample);
-void drawbutton4();
-void drawbutton5(int bank, int sample);
-void drawbutton6(int bank, int sample);
-void drawbutton7(int bank, int sample);
-void drawbutton8();
-void drawbutton9(int bank, int sample);
-void drawbutton10(int bank, int sample);
-void drawbutton11(int bank, int sample);
-void drawbutton12();
 
-void buttondraw(int bank, int value);
-void drawbuttonvol(int bank, int value, int CurrentBank);
+void drawbutton(int bank, int value);
+void drawbuttonvol(int bank, int sample, int vol);
 
 void setbutton();
 

@@ -37,7 +37,7 @@ int CurrentBank = 1;
 int CurrentSample = 1;
 
 public:
-Scene():state_(State_SAMPLE){}
+Scene():state_(State_VOLUME){}
 
 int play(){
   if (rotaryEncoder->isEncoderButtonClicked()){
@@ -46,7 +46,7 @@ int play(){
   }else{
   bankdraw(CurrentBank);
   sampledraw(0);
-  buttondraw(CurrentBank,0);
+  drawbutton(CurrentBank,0);
   volumedraw(0);
   return 1;
   }
@@ -54,7 +54,8 @@ int play(){
 
 int bank(){
   numberSelector.setRange(1.0, 5.0, 1, false, 0);
-  int value = numberSelector.getValue();
+  int value = CurrentBank;   //初期値は直前のバンク
+  value = ValueLoad(1,5);
   if (rotaryEncoder->isEncoderButtonClicked()){
     CurrentBank = ValueLoad(1,5);
     Serial.print(CurrentSample);
@@ -62,7 +63,7 @@ int bank(){
   }else{
   bankdraw(value);
   sampledraw(0);
-  buttondraw(value,0);
+  drawbutton(value,0);
   volumedraw(0);
   drawpointer(1);
   return 1;
@@ -81,7 +82,7 @@ int sample(){
   }else{
   bankdraw(CurrentBank);
   sampledraw(value);
-  buttondraw(CurrentBank,value);
+  drawbutton(CurrentBank,value);
   volumedraw(0);
   drawpointer(10);
   return 1;
