@@ -10,6 +10,10 @@ using namespace std;
 #define C2 TFT_SILVER
 #define C3 TFT_ORANGE
 
+#define xst 6  //ButtonStart x
+#define yst 37 //ButtonStart y
+#define spc 29 //ButtonSpace
+
 LGFX_7735 lcd;
 
 void titledraw(){
@@ -43,11 +47,8 @@ void lcdinit(){
     lcd.setColorDepth(24);
     lcd.setBaseColor(BG);
     lcd.fillScreen(BG);
-
-    titledraw();   
-
+    //titledraw();   
     lcd.clear();
-
 }
 
 
@@ -76,19 +77,19 @@ static LGFX_Sprite spriteb[9];
 
 
 void drawbutton1(int bank, int sample, int vol){
-sprite4.createSprite(27,27);
-  sprite4.fillScreen(BG);
-  sprite4.fillCircle(13,13,8,C1);
+spriteb[1].createSprite(27,27);
+  spriteb[1].fillScreen(BG);
+  spriteb[1].fillCircle(13,13,8,C1);
   if(sample == 1){ //該当時
-    sprite4.fillArc(13,13,10,13,0, vol, C2);
-    sprite4.fillCircle(13,13,8,C2);
+    spriteb[1].fillArc(13,13,10,13,0, vol, C2);
+    spriteb[1].fillCircle(13,13,8,C2);
   }else if(sample == 0){ //無選択時 
-    sprite4.fillCircle(13,13,8,C1);
-    sprite4.fillArc(13,13,10,13,0, retarc(bank,1), C1);
+    spriteb[1].fillCircle(13,13,8,C1);
+    spriteb[1].fillArc(13,13,10,13,0, retarc(bank,1), C1);
   }else{     
-    sprite4.fillArc(13,13,10,13,0, retarc(bank,1), C1); 
+    spriteb[1].fillArc(13,13,10,13,0, retarc(bank,1), C1); 
   }  
-  sprite4.pushSprite(6,37);
+  spriteb[1].pushSprite(&sprite1,xst,yst); //6, 37
 }
 
 void drawbutton2(int bank, int sample, int vol){
@@ -101,7 +102,7 @@ void drawbutton2(int bank, int sample, int vol){
   }else{
     sprite5.fillArc(13,13,10,13,0,retarc(bank,2),C1);
   }
-  sprite5.pushSprite(35,37);
+  sprite5.pushSprite(xst + spc,yst);
 }
 
 void drawbutton3(int bank, int sample, int vol){
@@ -114,7 +115,7 @@ void drawbutton3(int bank, int sample, int vol){
   }else{
   sprite6.fillArc(13,13,10,13,0,retarc(bank,3),C1);
   }
-  sprite6.pushSprite(64,37);
+  sprite6.pushSprite(xst + 2*spc, yst);
 }
 
 void drawbutton4(int bank, int sample, int volume){
