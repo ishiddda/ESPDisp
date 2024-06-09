@@ -3,6 +3,7 @@
 #include <rotary.h>
 #include <scene.hpp>
 #include <button.hpp>
+#include<settings.hpp>
 
 //インスタンス生成
 Scene scene; 
@@ -21,15 +22,21 @@ void setup(void){
     lcdinit();
     lcdcreate();
 
+    
+
+
+
     delay(500);
 }
 
 void loop(void){
-   
-  scene.update();
-  lcdpush();     
 
-  delay(100);
+  ReadIniFile();
+   
+  //scene.update();
+  //lcdpush();     
+
+  delay(1000);
 }
 
 
