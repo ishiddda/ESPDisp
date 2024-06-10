@@ -1,7 +1,7 @@
 #pragma once
 
 #include<arduino.h>
-#include<FS.h>
+//#include<FS.h>
 #include<String.h>
 #include<LittleFS.h>
 

@@ -1,35 +1,49 @@
 #include<settings.hpp>
 #include<Arduino.h>
 
+
 const char *iniFileName = "settings.ini";
 const char *iniHeader = "HEADER";
 String SSID             = "";
 String PASSWORD         = "";
 int nunm                = 1;
 
+const char *bank1 = "bank1";
+
+String bank = "";
+String sample = "";
+int vol = 1;
+
 
 void ReadIniFile( void )
 {
-    File fp = LittleFS.open( iniFileName, "r" );
+	LittleFS.begin();
+    File fp = LittleFS.open( "/settings.ini" "r" );
+	Serial.println(LittleFS.exists("/data/settings.ini"));
 
     if( !fp )
-    {
+    {	
         Serial.println("error: SD.open");
     } else {
         Serial.println("OK: Fs.open");
     }
 
-	SSID        = inifileString( fp, (char *)iniHeader, "SSID",     "ssid_01234" );
-    PASSWORD    = inifileString( fp, (char *)iniHeader, "PASSWORD", "pass_word" );
-    nunm        = inifileInteger( fp, (char *)iniHeader, "nunm", 0 );
+	//bank        = inifileString( fp, (char *)bank1, "bank", "ssid_01234" );
+    //sample    = inifileString( fp, (char *)bank1, "sample", "pass_word" );
+    //vol        = inifileInteger( fp, (char *)bank1, "data", 0 );
 
-	Serial.println(SSID);
-	Serial.println(PASSWORD);
-	Serial.println(nunm);
-
+	//Serial.println(bank);
+	//Serial.println(sample);
+	//Serial.println(vol);
     
+	LittleFS.end();
     fp.close();
 };
+
+void RoadBank(int bnum){
+	File fp = LittleFS.open( iniFileName, "r" );
+
+}
 
 
 // ----------------------------------------------------------------------------

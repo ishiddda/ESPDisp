@@ -5,6 +5,7 @@
 #include <button.hpp>
 #include<settings.hpp>
 
+
 //インスタンス生成
 Scene scene; 
 
